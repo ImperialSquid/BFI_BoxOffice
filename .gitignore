@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+
+bfi_boxoffice/cache/*.hash
+bfi_boxoffice/cache/*.RData
