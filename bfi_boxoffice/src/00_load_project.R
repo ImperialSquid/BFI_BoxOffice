@@ -1,0 +1,10 @@
+rm(list = ls())
+
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+setwd("..")
+library(ProjectTemplate)
+tictoc::tic()
+load.project()
+toc_list = tictoc::toc(quiet = TRUE)
+print(paste("Project loaded in ", toc_list$toc - toc_list$tic))
+rm(toc_list)
