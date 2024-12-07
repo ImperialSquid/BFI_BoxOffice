@@ -43,6 +43,12 @@ if (exists("files")) {
       bind_rows(files)
   }
   
+  # there are duplicates links, see /data README
+  files = files %>% 
+    group_by(href) %>% 
+    slice_head(n = 1) %>% 
+    ungroup()
+  
   # cache file URLs
   cache("files")
   
