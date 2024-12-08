@@ -1,5 +1,5 @@
 TODO:
-- [ ] Finish processing weekends into standardised dates
+- [x] Finish processing weekends into standardised dates
 - [ ] Implement getting additional data about films from OMDb (https://www.omdbapi.com/)
 
 
