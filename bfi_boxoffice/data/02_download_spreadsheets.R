@@ -51,4 +51,4 @@ cat(paste0("Found ", already_exist, " files already exist.\n",
            paste(errors,sep = ", "), "\n"))
 
 # clean up
-rm(host, session, files, files_list, files_ids, download_dir, index)
+rm(host, session, files, files_list, files_ids, download_dir, index, downloaded, errors, already_exist)
