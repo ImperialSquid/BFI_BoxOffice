@@ -72,7 +72,7 @@ if(exists("full_dataset")) {
              cinemas = as.numeric(cinemas),
              site_avg = as.numeric(site_avg),
              total_gross = as.numeric(total_gross)) %>% 
-      mutate(weekend = weekend) %>%  # TODO: weekend processing
+      mutate(weekend = weekend) %>%  # see 04_fix_dates.R for date processing
       select(! starts_with("...")) %>% 
       bind_rows(full_dataset)
   }
@@ -81,3 +81,4 @@ if(exists("full_dataset")) {
   
   rm(spreadsheet_dir, sheets, sheet_i, sheet, temp, weekend)
 }
+
