@@ -1,7 +1,7 @@
 library("readxl")
 
 if(exists("full_dataset")) {
-  print("Variable `full_dataset` already exists, skipping data script...")
+  cat("Variable `full_dataset` already exists, skipping data script...\n")
 } else {
   spreadsheet_dir = paste0(dirname(rstudioapi::getActiveDocumentContext()$path),
                            "/../data/spreadsheets")
@@ -40,7 +40,7 @@ if(exists("full_dataset")) {
     } else {
       weekend = NA
       
-      print(paste0("date not found in ", sheet))
+      warn(paste0("date not found in ", sheet))
     }
     
     full_dataset = temp %>%

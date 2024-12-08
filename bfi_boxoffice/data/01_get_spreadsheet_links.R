@@ -2,7 +2,7 @@ library("tidyverse")  # require rvest for scraping, magnittr for pipes, dplyr fo
 library("polite")  # it's good to be civil :)
 
 if (exists("files")) {
-  print("Variable `files` already exists, skipping data script...")
+  cat("Variable `files` already exists, skipping data script...\n")
 } else {
   host = "https://www.bfi.org.uk"
   session = bow(host)
