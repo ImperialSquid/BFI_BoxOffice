@@ -35,4 +35,4 @@ for (index in 1:length(files_list)) {
 }
 
 # clean up
-rm(host, session, files_list, files_ids, download_dir, index)
+rm(host, session, files, files_list, files_ids, download_dir, index)
