@@ -1,3 +1,8 @@
+TODO:
+- [ ] Finish processing weekends into standardised dates
+- [ ] Implement getting additional data about films from OMDb (https://www.omdbapi.com/)
+
+
 Files:
 - 01_get_spreadsheet_links - BFI spreadsheets have links in various places, this script grabs them all into a data frame for the nect script
 - 02_download_spreadsheets - This script downloads the needed spreadsheets, skipping any that already exist
