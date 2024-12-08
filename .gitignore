@@ -3,5 +3,12 @@
 .RData
 .Ruserdata
 
+# ignore cached files
 bfi_boxoffice/cache/*.hash
 bfi_boxoffice/cache/*.RData
+
+# ignore all data files
+bfi_boxoffice/data/*
+# except scripts and docs
+!bfi_boxoffice/data/*.R
+!bfi_boxoffice/data/*.md
