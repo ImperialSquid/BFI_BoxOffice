@@ -10,7 +10,7 @@ first_page = "/industry-data-insights/weekend-box-office-figures"
 links = bow(host) %>% 
   nod(first_page) %>% 
   scrape() %>% 
-  rvest::html_elements("a") %>% 
+  html_elements("a") %>% 
   html_attrs_dfr() %>% 
   data.frame()
 
@@ -32,7 +32,7 @@ for (p in pages) {
   files = session %>% 
     nod(p) %>% 
     scrape() %>% 
-    rvest::html_elements("a") %>% 
+    html_elements("a") %>% 
     html_attrs_dfr() %>% 
     data.frame() %>% 
     filter(grepl("download", href)) %>% 
@@ -50,6 +50,7 @@ files = files %>%
 withCallingHandlers(
   message = function(cnd) {
     if (grepl("Skipping", conditionMessage(cnd))){
+      # is there a better way than assign(... envir - .GlobalEnv?)
       assign("updated", FALSE, envir = .GlobalEnv)
     } else {
       assign("updated", TRUE, envir = .GlobalEnv)
