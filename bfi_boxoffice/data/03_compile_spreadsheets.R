@@ -1,7 +1,7 @@
 library("readxl")
 
-if(exists("full_dataset")) {
-  cat("Variable `full_dataset` already exists, skipping data script...\n")
+if(! updated) {
+  cat("Files list did not change from remote, skipping...\n")
 } else {
   spreadsheet_dir = paste0(dirname(rstudioapi::getActiveDocumentContext()$path),
                            "/../data/spreadsheets")
@@ -81,4 +81,3 @@ if(exists("full_dataset")) {
   
   rm(spreadsheet_dir, sheets, sheet_i, sheet, temp, weekend)
 }
-

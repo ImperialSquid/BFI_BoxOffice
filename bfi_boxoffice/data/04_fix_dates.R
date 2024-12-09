@@ -1,7 +1,7 @@
 library(lubridate)
 
-if(exists("boxoffice")) {
-  cat("Variable `boxoffice` already exists, skipping data script...\n")
+if (! updated) {
+  cat("Files list did not change from remote, skipping...\n")
 } else {
   # preprocess dates first to save a lot of repeated regex matching
   weekend_df = full_dataset %>%
