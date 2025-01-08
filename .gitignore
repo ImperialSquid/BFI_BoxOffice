@@ -3,6 +3,9 @@
 .RData
 .Ruserdata
 
+# ignore secrets like API keys
+bfi_boxoffice/omdb_secret
+
 # ignore cached files
 bfi_boxoffice/cache/*.hash
 bfi_boxoffice/cache/*.RData
