@@ -27,8 +27,10 @@ if (! updated) {
                              form == 3 ~ str_match(weekend, "^BFI: Weekend \\d{1,2}\\w{2} (\\w+)\\s?-\\s?\\d{1,2}\\w{2} \\w+ \\d{4} UK box office report$")[[2]],
                              form == 4 ~ str_match(weekend, "^BFI: Weekend \\d{1,2}\\s?-\\s?\\d{1,2}\\s+(\\w+) \\d{4} UK box office report$")[[2]],
                              form == 5 ~ str_match(weekend, "^BFI: Weekend \\d{1,2} (\\w+) - \\d{1,2} \\w+ \\d{4} UK box office report$")[[2]])) %>%
-    mutate(month = case_when(form > 1 ~ match(month, month.name, nomatch = 0)[1] + match(month, month.abb, nomatch = 0)[1],
-                               .default = suppressWarnings(as.numeric(month)))) %>%
+    mutate(month = case_when(month == "May" ~ 5,  # May's full and abbreviated names are the same so this is a special case
+                             # otherwise just index in both lists and add the results (match returns 0 for failed matches)
+                             form > 1 ~ match(month, month.name, nomatch = 0)[1] + match(month, month.abb, nomatch = 0)[1],
+                             .default = suppressWarnings(as.numeric(month)))) %>%
     mutate(day = case_when(form == 1 ~ str_match(weekend, "^BFI Weekend Box Office (\\d{2})/\\d{2}/\\d{4} - \\d{2}/\\d{2}/\\d{4}$")[[2]],
                            form == 2 ~ str_match(weekend, "^BFI: Weekend (\\d{1,2})\\w{2}-\\d{1,2}\\w{2}\\s+\\w+ \\d{4} UK box office report$")[[2]],
                            form == 3 ~ str_match(weekend, "^BFI: Weekend (\\d{1,2})\\w{2} \\w+\\s?-\\s?\\d{1,2}\\w{2} \\w+ \\d{4} UK box office report$")[[2]],
@@ -40,13 +42,12 @@ if (! updated) {
                                      day = day)) %>% 
     select(! c(form, year, month, day))
   
-  boxoffice = full_dataset %>% 
+  box_office = full_dataset %>% 
     full_join(weekend_df, by = "weekend") %>% 
     mutate(weekend = weekend_clean) %>% 
     select(! weekend_clean)
   
-  cache("boxoffice")
-  cache("weekend_df")
+  cache("box_office")
   
   rm(weekend_df, full_dataset)
 }
