@@ -3,8 +3,7 @@ library("readxl")
 if(! updated) {
   cat("Files list did not change from remote, skipping...\n")
 } else {
-  spreadsheet_dir = paste0(dirname(rstudioapi::getActiveDocumentContext()$path),
-                           "/../data/spreadsheets")
+  spreadsheet_dir = paste0(getwd(), "/data/spreadsheets")
   
   sheets = list.files(spreadsheet_dir)
   
