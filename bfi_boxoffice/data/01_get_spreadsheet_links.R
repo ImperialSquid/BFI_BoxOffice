@@ -1,4 +1,5 @@
 library("tidyverse")  # require rvest for scraping, magnittr for pipes, dplyr for other verbs
+library("rvest")
 library("polite")  # it's good to be civil :)
 
 host = "https://www.bfi.org.uk"
@@ -47,13 +48,11 @@ files = files %>%
   ungroup()
 
 # cache file URLs and set update flag for later files
+updated = TRUE
 withCallingHandlers(
   message = function(cnd) {
     if (grepl("Skipping", conditionMessage(cnd))){
-      # is there a better way than assign(... envir - .GlobalEnv?)
       assign("updated", FALSE, envir = .GlobalEnv)
-    } else {
-      assign("updated", TRUE, envir = .GlobalEnv)
     }
   },
   cache("files")
