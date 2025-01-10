@@ -76,7 +76,5 @@ if(! updated) {
       bind_rows(full_dataset)
   }
   
-  cache("full_dataset")
-  
   rm(spreadsheet_dir, sheets, sheet_i, sheet, temp, weekend)
 }

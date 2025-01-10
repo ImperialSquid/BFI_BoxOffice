@@ -47,8 +47,6 @@ if (! updated) {
     mutate(weekend = weekend_clean) %>% 
     select(! weekend_clean)
   
-  cache("box_office")
-  
   rm(weekend_df, full_dataset)
 }
 
