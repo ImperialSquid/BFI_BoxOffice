@@ -1,11 +1,8 @@
-library("tidyverse")
-library("polite")
-
 if (! updated) {
   cat("Files list did not change from remote, skipping...\n")
 } else {
   host = files$href[1]
-  session = bow(host)
+  session = polite::bow(host)
   
   # file URLs from previous step
   files_list = files %>% 
@@ -31,8 +28,8 @@ if (! updated) {
       tryCatch(
         {
           session %>% 
-            nod(files_list[index]) %>% 
-            rip(path = paste0(download_dir,
+            polite::nod(files_list[index]) %>% 
+            polite::rip(path = paste0(download_dir,
                               "/spreadsheets"),
                 destfile = files_ids[index])
           # don't specify file type, some are xls, some are xlsx _sigh_
