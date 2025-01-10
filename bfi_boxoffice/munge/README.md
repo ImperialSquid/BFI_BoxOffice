@@ -1,1 +1,12 @@
-Here you can store any preprocessing or data munging code for your project. For example, if you need to add columns at runtime, merge normalized data sets or globally censor any data points, that code should be stored in the `munge` directory. The preprocessing scripts stored in `munge` will be executed sequentially when you call `load.project()`, so you should append numbers to the filenames to indicate their sequential order.
+Files:
+- 1_01_compile_bfi_spreadsheets
+    - Reads in BFI spreadsheets (data/spreadsheets)
+    - Compile spreadsheets into one dataset
+- 1_02_fix_bfi_dates
+    - Fixes dates in spreadsheets
+    - Extract from raw strings and convert to datetime objects
+- 1_03_normalise_bfi_origins
+    - Normalise origins column into a separate column
+    - Fixes and standardise into proper country names
+- 9_99_final
+    - Final clean up, etc
